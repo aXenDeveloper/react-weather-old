@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: #4183d7;
+}
+
+.topBar {
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    padding: 10px;
+  }
+}
+
+.weather {
+  & > * {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+  }
+}
+
+.cloud {
+  position: absolute;
+  svg {
+    height: 300px;
+
+    path {
+      fill: #fff;
+    }
+  }
+
+  &-right {
+    transform: translateX(200px) scale(0.68, 0.68) rotateY(180deg);
+    opacity: 0.5;
+  }
+
+  &-left {
+    transform: translateX(-200px) scale(0.68, 0.68);
+    opacity: 0.5;
+  }
+}
+
+@keyframes rain-drop {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+
+.cloud-rain {
+  display: flex;
+  justify-content: space-around;
+
+  .drop {
+    background-color: #fff;
+    height: 25px;
+    width: 4px;
+    margin: 5px;
+    border-radius: 25px;
+    display: inline-block;
+    animation: rain-drop 2s linear infinite;
+    opacity: 0.85;
+
+    &.drop-1 {
+      animation-duration: 1s;
+    }
+
+    &.drop-2 {
+      animation-duration: 0.95s;
+    }
+
+    &.drop-3 {
+      animation-duration: 1.2s;
+    }
+
+    &.drop-4 {
+      animation-duration: 0;
+    }
+
+    &.drop-5 {
+      animation-duration: 0.85s;
+    }
+  }
+}
