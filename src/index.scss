@@ -32,16 +32,41 @@ body {
 }
 
 .weather {
-  &\:rain {
+  &\:rain, &\:cloudScattered {
     display: flex;
     justify-content: center;
     position: relative;
-    animation: weather-up 1s ease;
+    animation: weather-up 1s ease-out;
+  }
+}
+
+@keyframes cloudAnimation-left {
+  0% {
+    transform: translateX(150px) scale(.68, .68);
+  }
+  50% {
+    transform: translateX(100px) scale(.68, .68);
+  }
+  100% {
+    transform: translateX(150px) scale(.68, .68);
+  }
+}
+
+@keyframes cloudAnimation-right {
+  0% {
+    transform: translateX(-150px) scale(.68, .68);
+  }
+  50% {
+    transform: translateX(-100px) scale(.68, .68);
+  }
+  100% {
+    transform: translateX(-150px) scale(.68, .68);
   }
 }
 
 .cloud {
-  position: relative;
+  //position: relative;
+  z-index: 1;
   
   .cloudSVG {
     height: 300px;
@@ -50,20 +75,28 @@ body {
   }
 
   &-right {
-    transform: translateX(-100px) scale(0.68, 0.68) rotateY(180deg);
+    transform: translateX(-100px) scale(.68, .68) rotateY(180deg);
     opacity: 0.5;
+    animation: cloudAnimation-right 20s ease infinite;
+    z-index: -1;
   }
 
   &-left {
-    transform: translateX(100px) scale(0.68, 0.68);
+    transform: translateX(100px) scale(.68, .68);
     opacity: 0.5;
+    animation: cloudAnimation-left 18s ease infinite;
+    z-index: -1;
   }
 
-  .temp {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .cloud\:main {
+    position: relative;
+
+    .temp {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-55%, -50%);
+    }
   }
 }
 
@@ -89,7 +122,7 @@ body {
     border-radius: 25px;
     display: inline-block;
     animation: rain-drop 2s linear infinite;
-    opacity: 0.85;
+    opacity: .85;
 
     &.drop-1 {animation-duration: 1s;}
     &.drop-2 {animation-duration: 0.95s;}
