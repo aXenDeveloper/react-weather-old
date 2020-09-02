@@ -42,6 +42,7 @@ body {
     justify-content: center;
     position: relative;
     animation: weather-up 1s ease-out;
+    transition: all 5s ease-out;
     overflow: hidden;
     height: inherit;
   }

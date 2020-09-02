@@ -28,10 +28,18 @@ const Content = props => {
         </svg>
     );
 
+    const selectWeather = {
+        '02d': <CloudView temp={props.temp} cloudType={cloud('normal')} sun={sun} />,
+        '03d': <CloudView temp={props.temp} cloudType={cloud('gray')} />,
+        '04d': <CloudView temp={props.temp} cloudType={cloud('dark')} />,
+        '10d': <CloudView temp={props.temp} cloudType={cloud('normal')} rain={true} sun={sun} />,
+        '09d': <CloudView temp={props.temp} cloudType={cloud('dark')} rain={true} />,
+    }
+
     return (
         <div className='content'>
             <div className='weather'>
-                <CloudView temp={props.temp} cloudType={cloud('dark')} rain={true} sun={sun} />
+                {props.loading ? 'Loadnig' : selectWeather[props.icon]}
             </div>
             <div>
                 TEST
