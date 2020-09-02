@@ -3,7 +3,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   background-color: #4183d7;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .topBar {
@@ -20,6 +20,7 @@ body {
   }
 }
 
+
 @keyframes weather-up {
   0% {
     opacity: 0;
@@ -32,102 +33,160 @@ body {
 }
 
 .weather {
-  &\:rain, &\:cloudScattered {
+  position: relative;
+  z-index: 1;
+  height: 400px;
+
+  > * {
     display: flex;
     justify-content: center;
     position: relative;
     animation: weather-up 1s ease-out;
-  }
-}
-
-@keyframes cloudAnimation-left {
-  0% {
-    transform: translateX(150px) scale(.68, .68);
-  }
-  50% {
-    transform: translateX(100px) scale(.68, .68);
-  }
-  100% {
-    transform: translateX(150px) scale(.68, .68);
-  }
-}
-
-@keyframes cloudAnimation-right {
-  0% {
-    transform: translateX(-150px) scale(.68, .68);
-  }
-  50% {
-    transform: translateX(-100px) scale(.68, .68);
-  }
-  100% {
-    transform: translateX(-150px) scale(.68, .68);
+    overflow: hidden;
+    height: inherit;
   }
 }
 
 .cloud {
-  //position: relative;
-  z-index: 1;
-  
-  .cloudSVG {
-    height: 300px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
 
-    path {fill: #fff;}
+  @keyframes cloudAnimation-left {
+    0% {
+      transform: translateX(50px) scale(.68, .68);
+    }
+    50% {
+      transform: translateX(0) scale(.68, .68);
+    }
+    100% {
+      transform: translateX(50px) scale(.68, .68);
+    }
   }
 
-  &-right {
-    transform: translateX(-100px) scale(.68, .68) rotateY(180deg);
+  &\:left {
+    position: absolute;
+    left: -200px;
+    transform: scale(.68, .68);
     opacity: 0.5;
-    animation: cloudAnimation-right 20s ease infinite;
-    z-index: -1;
+    animation: cloudAnimation-left 20s ease infinite;
+    z-index: 1;
   }
 
-  &-left {
-    transform: translateX(100px) scale(.68, .68);
-    opacity: 0.5;
-    animation: cloudAnimation-left 18s ease infinite;
-    z-index: -1;
+  .sun\:left {
+    position: absolute;
+    left: -125px;
+    transform: scale(.5, .5);
+    top: -25px;
+    z-index: 90;
   }
 
-  .cloud\:main {
+  &\:center {
     position: relative;
+    z-index: 100;
 
     .temp {
       position: absolute;
       top: 55%;
       left: 50%;
       transform: translate(-55%, -50%);
+      color: #000;
+    }
+  }
+
+  @keyframes cloudAnimation-right {
+    0% {
+      transform: translateX(-50px) scale(.68, .68) rotateY(180deg);
+    }
+    50% {
+      transform: translateX(0) scale(.68, .68) rotateY(180deg);
+    }
+    100% {
+      transform: translateX(-50px) scale(.68, .68) rotateY(180deg);
+    }
+  }
+
+  &\:right {
+    position: absolute;
+    right: -200px;
+    transform: scale(.68, .68);
+    opacity: 0.5;
+    animation: cloudAnimation-right 20s ease infinite;
+    z-index: 1;
+  }
+
+  &_normal {
+    fill: #fff;
+  }
+
+  &_gray {
+    fill: #e6e6e6;
+  }
+
+  &_dark {
+    fill: #3a3a3a;
+
+    ~ .temp {
+      color: #fff;
+    }
+  }
+
+  &_SVG {
+    height: 300px;
+    width: 100%;
+  }
+
+  @keyframes rain-drop {
+    0% {
+      transform: translateY(-100px);
+    }
+    100% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+  }
+
+  &_rain {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -10;
+  
+    .drop {
+      background-color: #fff;
+      height: 25px;
+      width: 4px;
+      margin: 5px;
+      border-radius: 25px;
+      display: inline-block;
+      animation: rain-drop 2s linear infinite;
+      opacity: .85;
+  
+      &.drop-1 {animation-duration: 1s;}
+      &.drop-2 {animation-duration: 0.95s;}
+      &.drop-3 {animation-duration: 1.2s;}
+      &.drop-4 {animation-duration: 0;}
+      &.drop-5 {animation-duration: 0.85s;}
     }
   }
 }
 
-@keyframes rain-drop {
+
+@keyframes sunRotate {
   0% {
-    transform: translateY(-100px);
+    transform: rotate(0);
   }
   100% {
-    transform: translateY(100px);
-    opacity: 0;
+    transform: rotate(360deg);
   }
 }
 
-.cloudRain {
-  display: flex;
-  justify-content: space-around;
+.sunSVG{
+  height: 300px;
+  animation: sunRotate 10s linear infinite;
 
-  .drop {
-    background-color: #fff;
-    height: 25px;
-    width: 4px;
-    margin: 5px;
-    border-radius: 25px;
-    display: inline-block;
-    animation: rain-drop 2s linear infinite;
-    opacity: .85;
-
-    &.drop-1 {animation-duration: 1s;}
-    &.drop-2 {animation-duration: 0.95s;}
-    &.drop-3 {animation-duration: 1.2s;}
-    &.drop-4 {animation-duration: 0;}
-    &.drop-5 {animation-duration: 0.85s;}
-  }
+  path {fill: #fdd020;}
 }
