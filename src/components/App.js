@@ -6,7 +6,7 @@ export default class App extends React.Component {
   state = {
     value: 'Gdańsk',
     clouds: null,
-    temp: 200,
+    temp: 0,
     icon: '',
     loading: false
   }
