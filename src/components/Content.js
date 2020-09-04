@@ -1,7 +1,8 @@
 import React from 'react';
 import WeatherCloudView from '../views/weather/cloudView';
 import WeatherNoneView from '../views/weather/noneView';
-//import SunView from '../views/weather/sunView';
+import LoadingView from '../views/loadingView';
+import SunView from '../views/weather/sunView';
 
 const Content = props => {
 
@@ -26,11 +27,8 @@ const Content = props => {
     return (
         <div className='content'>
             <div className='weather'>
-                {props.temp ? (
-                    props.loading ? 'Loadnig' : selectWeather[props.icon]
-                ) : (
-                    <WeatherNoneView /> 
-                )}
+                <SunView />
+                {props.temp ? props.loading ? <LoadingView /> : selectWeather[props.icon] : <WeatherNoneView />}
             </div>
             <div>
                 TEST

@@ -25,17 +25,20 @@ export default class App extends React.Component {
     });
 
     try {
-      const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=40ea5ceef9ec33888dffe518d21b0d28&units=metric`);
+      const keyAPI = '40ea5ceef9ec33888dffe518d21b0d28';
+      const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=${keyAPI}&units=metric`);
       const APIJson = await API.json();
+
       this.setState({
         clouds: APIJson.clouds.all,
         temp: APIJson.main.temp,
         icon: APIJson.weather[0].icon,
         loading: false
       });
-      console.log(APIJson);
+
+      console.log(APIJson); // Debug
     } catch(err) {
-      console.log(err);
+      console.log(err); // Debug
     }
   }
 

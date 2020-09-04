@@ -1,0 +1,146 @@
+@import "./weatherAnimation.scss";
+
+.weather {
+  position: relative;
+  z-index: 1;
+  height: 400px;
+
+  > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+  }
+
+  > *:not(.loading) {
+    position: relative;
+    animation: weather-up 1s ease-out;
+    transition: all 5s ease-out;
+    overflow: hidden;
+  }
+
+  &_cloud {
+    align-items: flex-start;
+  }
+
+  &_sun .temp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+  }
+}
+
+.cloud {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  &\:left {
+    position: absolute;
+    left: -200px;
+    transform: scale(0.68, 0.68);
+    opacity: 0.5;
+    animation: cloudAnimation-left 20s ease infinite;
+    z-index: 1;
+  }
+
+  .sun\:left {
+    position: absolute;
+    left: -125px;
+    transform: scale(0.5, 0.5);
+    top: -25px;
+    z-index: 90;
+  }
+
+  &\:center {
+    position: relative;
+    z-index: 100;
+
+    .temp {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-55%, -50%);
+      color: #000;
+    }
+  }
+
+  &\:right {
+    position: absolute;
+    right: -200px;
+    transform: scale(0.68, 0.68);
+    opacity: 0.5;
+    animation: cloudAnimation-right 20s ease infinite;
+    z-index: 1;
+  }
+
+  &_normal {
+    fill: #fff;
+  }
+
+  &_gray {
+    fill: #e6e6e6;
+  }
+
+  &_dark {
+    fill: #3a3a3a;
+
+    ~ .temp {
+      color: #fff;
+    }
+  }
+
+  &_SVG {
+    height: 300px;
+    width: 100%;
+  }
+
+  &_rain {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -10;
+
+    .drop {
+      background-color: #fff;
+      height: 25px;
+      width: 4px;
+      margin: 5px;
+      border-radius: 25px;
+      display: inline-block;
+      animation: rain-drop 2s linear infinite;
+      opacity: 0.85;
+
+      &.drop-1 {
+        animation-duration: 1s;
+      }
+      &.drop-2 {
+        animation-duration: 0.95s;
+      }
+      &.drop-3 {
+        animation-duration: 1.2s;
+      }
+      &.drop-4 {
+        animation-duration: 0;
+      }
+      &.drop-5 {
+        animation-duration: 0.85s;
+      }
+    }
+  }
+}
+
+.sun_SVG {
+  width: 300px;
+  height: 300px;
+  animation: sunRotate 10s linear infinite;
+
+  path {
+    fill: #fdd020;
+  }
+}
