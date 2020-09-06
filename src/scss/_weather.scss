@@ -49,12 +49,31 @@
     z-index: 1;
   }
 
-  .sun\:left {
+  .timeOfDay\:left {
     position: absolute;
     left: -125px;
-    transform: scale(0.5, 0.5);
+    transform: scale(.5, .5);
     top: -25px;
     z-index: 90;
+
+    .SVG_day {
+      width: 300px;
+      height: 300px;
+      animation: sunRotate 10s linear infinite;
+
+      path {
+        fill: $color-sun;
+      }
+    }
+
+    .SVG_night {
+      width: 300px;
+      height: 300px;
+      
+      path {
+        fill: #868686;
+      }
+    }
   }
 
   &\:center {
@@ -70,7 +89,7 @@
   &\:right {
     position: absolute;
     right: -200px;
-    transform: scale(0.68, 0.68);
+    transform: scale(.68, .68);
     opacity: 0.5;
     animation: cloudAnimation-right 20s ease infinite;
     z-index: 1;
@@ -90,11 +109,6 @@
     ~ .temp {
       color: #fff;
     }
-  }
-
-  &_SVG {
-    height: 300px;
-    width: 100%;
   }
 
   &_rain {
@@ -135,17 +149,22 @@
   }
 }
 
-.sun_SVG {
-  width: 300px;
-  height: 300px;
-  animation: sunRotate 10s linear infinite;
-
-  path {
-    fill: #fdd020;
-  }
-}
-
 .SVG {
+  &_cloud {
+    height: 300px;
+    width: 100%;
+  }
+
+  &_sun {
+    width: 300px;
+    height: 300px;
+    animation: sunRotate 10s linear infinite;
+  
+    path {
+      fill: $color-sun;
+    }
+  }
+
   &_thunder {
     width: 100px;
     height: 100px;
@@ -153,6 +172,7 @@
     left: 20%;
     bottom: 0;
     animation: thunderAnimation 2.5s linear infinite;
+    z-index: 100;
 
     path {
       fill: #ffa754;

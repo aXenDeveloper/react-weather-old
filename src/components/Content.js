@@ -8,7 +8,7 @@ import MoonView from '../views/weather/moonView';
 const Content = props => {
 
     const cloud = el => {
-        const cloudElement = `cloud_${el} cloud_SVG`;
+        const cloudElement = `cloud_${el} SVG_cloud`;
 
         return (
             <svg className={cloudElement} xmlns="http://www.w3.org/2000/svg" viewBox="0 -87 463.83425 463">
@@ -17,21 +17,37 @@ const Content = props => {
         );
     };
 
-    const selectWeather = {
+    const selectWeather = (icon, id) => {
+
+    }
+
+    const weather = {
         '01d': <SunView temp={props.temp} />,
-        '02d': <WeatherCloudView temp={props.temp} cloudType={cloud('normal')} sun={true} />,
+        '01n': <MoonView temp={props.temp} />,
+
+        '02d': <WeatherCloudView temp={props.temp} cloudType={cloud('normal')} timeOfDay={'day'} />,
+        '02n': <WeatherCloudView temp={props.temp} cloudType={cloud('normal')} timeOfDay={'night'} />,
+
         '03d': <WeatherCloudView temp={props.temp} cloudType={cloud('gray')} />,
+        '03n': <WeatherCloudView temp={props.temp} cloudType={cloud('gray')} />,
+
         '04d': <WeatherCloudView temp={props.temp} cloudType={cloud('dark')} />,
-        '10d': <WeatherCloudView temp={props.temp} cloudType={cloud('normal')} rain={true} sun={true} />,
+        '04n': <WeatherCloudView temp={props.temp} cloudType={cloud('dark')} />,
+
         '09d': <WeatherCloudView temp={props.temp} cloudType={cloud('dark')} rain={true} />,
+        '09n': <WeatherCloudView temp={props.temp} cloudType={cloud('dark')} rain={true} />,
+
+        '10d': <WeatherCloudView temp={props.temp} cloudType={cloud('gray')} rain={true} timeOfDay={'day'} />,
+        '10n': <WeatherCloudView temp={props.temp} cloudType={cloud('gray')} rain={true} timeOfDay={'night'} />,
+
+        '11d': <WeatherCloudView temp={props.temp} cloudType={cloud('gray')} rain={true} timeOfDay={'day'} thunder={true} />,
+        '11n': <WeatherCloudView temp={props.temp} cloudType={cloud('gray')} rain={true} timeOfDay={'night'} thunder={true} />,
     }
 
     return (
         <div className='content'>
             <div className='weather'>
-                <MoonView temp={props.temp} />
-                <SunView temp={props.temp} />
-                <WeatherCloudView temp={props.temp} cloudType={cloud('dark')} rain={true} sun={true} thunder={true} />
+            {selectWeather['11d']}
                 {props.temp ? (props.loading ? <LoadingView /> : selectWeather[props.icon]) : <WeatherNoneView />}
             </div>
             <div>

@@ -1,3 +1,5 @@
+$color-sun: #fdd020;
+
 @mixin center_absolute($x, $y) {
     position: absolute;
     top: $x;

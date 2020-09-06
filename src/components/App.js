@@ -6,7 +6,6 @@ export default class App extends React.Component {
   state = {
     value: 'Gdańsk',
     temp: 0,
-    icon: '',
     loading: false
   }
 
