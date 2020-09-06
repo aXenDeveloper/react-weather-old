@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const cloudScatteredView = ({ temp, cloudType, rain, sun}) => {
+const cloudScatteredView = ({ temp, cloudType, rain, sun, thunder }) => {
+
 
     const dropRain = num => {
         const drops = [];
@@ -19,7 +20,7 @@ const cloudScatteredView = ({ temp, cloudType, rain, sun}) => {
             <div className='cloud'>
                 {sun && (
                     <div className='sun sun:left'>
-                        <svg className='sunSVG' viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+                        <svg className='sun_SVG' viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
                             <g fill="#fdd020"><path d="m376 240c0 75.109375-60.890625 136-136 136s-136-60.890625-136-136 60.890625-136 136-136 136 60.890625 136 136zm0 0" />
                                 <path d="m240 480c-4.417969 0-8-3.582031-8-8v-64c0-4.417969 3.582031-8 8-8s8 3.582031 8 8v64c0 4.417969-3.582031 8-8 8zm0 0" />
                                 <path d="m240 80c-4.417969 0-8-3.582031-8-8v-64c0-4.417969 3.582031-8 8-8s8 3.582031 8 8v64c0 4.417969-3.582031 8-8 8zm0 0" />
@@ -39,8 +40,13 @@ const cloudScatteredView = ({ temp, cloudType, rain, sun}) => {
 
                 <div className='cloud:center'>
                     {cloudType}
+                    {thunder && (
+                        <svg className="SVG_thunder" xmlns="http://www.w3.org/2000/svg" viewBox="-48 0 448 448">
+                            <path d="m256 0h-160l-96 224h160l-64 224 256-320h-160zm0 0" />
+                        </svg>
+                    )}
                     {rain && dropRain(5)}
-                    <div className='temp'>{temp}</div>
+                    <div className='temp'>{temp}&#176;C</div>
                 </div>
 
                 <div className='cloud:right'>
@@ -57,12 +63,14 @@ cloudScatteredView.propTypes = {
     temp: PropTypes.number.isRequired,
     cloudType: PropTypes.object.isRequired,
     rain: PropTypes.bool,
-    sun: PropTypes.bool
+    sun: PropTypes.bool,
+    thunder: PropTypes.bool
 };
 
 cloudScatteredView.defaultProps = {
     rain: false,
-    sun: false
+    sun: false,
+    thunder: false
 }
 
 export default cloudScatteredView;

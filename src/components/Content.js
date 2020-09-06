@@ -3,6 +3,7 @@ import WeatherCloudView from '../views/weather/cloudView';
 import WeatherNoneView from '../views/weather/noneView';
 import LoadingView from '../views/loadingView';
 import SunView from '../views/weather/sunView';
+import MoonView from '../views/weather/moonView';
 
 const Content = props => {
 
@@ -17,6 +18,7 @@ const Content = props => {
     };
 
     const selectWeather = {
+        '01d': <SunView temp={props.temp} />,
         '02d': <WeatherCloudView temp={props.temp} cloudType={cloud('normal')} sun={true} />,
         '03d': <WeatherCloudView temp={props.temp} cloudType={cloud('gray')} />,
         '04d': <WeatherCloudView temp={props.temp} cloudType={cloud('dark')} />,
@@ -27,8 +29,10 @@ const Content = props => {
     return (
         <div className='content'>
             <div className='weather'>
-                <SunView />
-                {props.temp ? props.loading ? <LoadingView /> : selectWeather[props.icon] : <WeatherNoneView />}
+                <MoonView temp={props.temp} />
+                <SunView temp={props.temp} />
+                <WeatherCloudView temp={props.temp} cloudType={cloud('dark')} rain={true} sun={true} thunder={true} />
+                {props.temp ? (props.loading ? <LoadingView /> : selectWeather[props.icon]) : <WeatherNoneView />}
             </div>
             <div>
                 TEST

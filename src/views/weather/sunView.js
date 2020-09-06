@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const sunView = () => {
+const sunView = ({ temp }) => {
     return (
         <div className='weather_sun'>
             <svg className='sun_SVG' viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
@@ -14,9 +15,17 @@ const sunView = () => {
                     <path d="m72 248h-64c-4.417969 0-8-3.582031-8-8s3.582031-8 8-8h64c4.417969 0 8 3.582031 8 8s-3.582031 8-8 8zm0 0" />
                     <path d="m72 408 48-48" /><path d="m72 416c-3.234375 0-6.152344-1.949219-7.390625-4.9375s-.550781-6.429688 1.734375-8.71875l48-48c3.140625-3.03125 8.128906-2.988281 11.214844.097656 3.085937 3.085938 3.128906 8.074219.097656 11.214844l-48 48c-1.5 1.5-3.535156 2.34375-5.65625 2.34375zm0 0" /></g>
             </svg>
-            <div className='temp'>200</div>
+            <div className='temp'>{temp}&#176;C</div>
         </div>
     );
+}
+
+sunView.propTypes = {
+    temp: PropTypes.number.isRequired
+}
+
+sunView.defaultProps = {
+    temp: 0
 }
 
 export default sunView;

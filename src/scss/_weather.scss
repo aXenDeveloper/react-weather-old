@@ -1,9 +1,10 @@
-@import "./weatherAnimation.scss";
+@import './_base';
+@import './_animation';
 
 .weather {
   position: relative;
   z-index: 1;
-  height: 400px;
+  height: 40rem;
 
   > * {
     display: flex;
@@ -24,10 +25,12 @@
   }
 
   &_sun .temp {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @include center_absolute(50%, 50%);
+    color: #000;
+  }
+
+  &_moon .temp {
+    @include center_absolute(40%, 54%);
     color: #000;
   }
 }
@@ -40,8 +43,8 @@
   &\:left {
     position: absolute;
     left: -200px;
-    transform: scale(0.68, 0.68);
-    opacity: 0.5;
+    transform: scale(.68, .68);
+    opacity: .5;
     animation: cloudAnimation-left 20s ease infinite;
     z-index: 1;
   }
@@ -59,10 +62,7 @@
     z-index: 100;
 
     .temp {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-55%, -50%);
+      @include center_absolute(55%, 50%);
       color: #000;
     }
   }
@@ -142,5 +142,29 @@
 
   path {
     fill: #fdd020;
+  }
+}
+
+.SVG {
+  &_thunder {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 20%;
+    bottom: 0;
+    animation: thunderAnimation 2.5s linear infinite;
+
+    path {
+      fill: #ffa754;
+    }
+  }
+
+  &_moon {
+    width: 250px;
+    height: 250px;
+
+    path {
+      fill: #fce666;
+    }
   }
 }
