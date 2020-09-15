@@ -47,8 +47,8 @@ const Content = props => {
     return (
         <div className='content'>
             <div className='weather'>
-            {selectWeather['11d']}
-                {props.temp ? (props.loading ? <LoadingView /> : selectWeather[props.icon]) : <WeatherNoneView />}
+            {weather['11d']}
+                {props.temp ? (props.loading ? <LoadingView /> : weather[props.icon]) : <WeatherNoneView />}
             </div>
             <div>
                 TEST
