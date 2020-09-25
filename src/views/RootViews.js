@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Form from './Form';
+import { configAPI } from '../configAPI';
+import Form from '../components/Form';
 
-const configAPI = {
-    key: '40ea5ceef9ec33888dffe518d21b0d28'
-}
-
-class API extends Component {
+class RootViews extends Component {
     state = {
         value: this.props.match.params.id ? this.props.match.params.id : ''
     }
@@ -29,8 +26,8 @@ class API extends Component {
 
     handleForm = e => {
         e.preventDefault();
-        this.API();
         this.props.history.push(this.state.value.toLowerCase());
+        this.API();
     }
 
     handleInput = e => {
@@ -40,13 +37,17 @@ class API extends Component {
     }
 
     render() {
+        const { value } = this.state;
+
         return (
             <>
-                <div>You are now at {this.state.value}</div>
-                <Form handleForm={this.handleForm} handleInput={this.handleInput} valueInput={this.state.value} />
+                <div className="topBar">
+                    <Form handleForm={this.handleForm} handleInput={this.handleInput} value={value} />
+                </div>
+                <div>You are now at {value}</div>
             </>
         )
     }
 };
 
-export default withRouter(API);
+export default withRouter(RootViews);

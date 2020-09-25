@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Weather from './API';
+import RootViews from '../views/RootViews';
 
 const Root = () => {
   return (
     <BrowserRouter>
-      <Route exact path='/' component={Weather} />
-      <Route path='/:id' component={Weather} />
+      <Route exact path='/' component={RootViews} />
+      <Route path='/:id' component={RootViews} />
     </BrowserRouter>
   );
 }
