@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Form = ({ handleInput, handleForm, value  }) => (
-    <form onSubmit={handleForm}>
-        <input type='text' onChange={handleInput} value={value} placeholder='Wpisz miasto' />
-        <button type="submit">Search</button>
+const Form = ({ handleInput, handleSubmit, city }) => (
+    <form onSubmit={handleSubmit}>
+        <input onChange={handleInput} value={city} type='text' placeholder='Wpisz miasto' />
+        <button>Search</button>
     </form>
-);
+)
 
 export default Form;

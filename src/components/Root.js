@@ -1,14 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import RootViews from '../views/RootViews';
+import RootView from '../views/rootView';
 
-const Root = () => {
-  return (
-    <BrowserRouter>
-      <Route exact path='/' component={RootViews} />
-      <Route path='/:id' component={RootViews} />
-    </BrowserRouter>
-  );
-}
+const Root = () => (
+  <BrowserRouter>
+    <Route exact path='/' component={RootView} />
+    <Route path='/:id' component={RootView} />
+  </BrowserRouter>
+)
 
 export default Root;

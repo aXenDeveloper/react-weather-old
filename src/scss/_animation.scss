@@ -1,71 +1,10 @@
 @keyframes weather-up {
     0% {
         opacity: 0;
-        top: 40px;
+        transform: translateY(40px);
     }
     100% {
         opacity: 1;
-        top: 0;
-    }
-}
-
-@keyframes cloudAnimation-left {
-    0% {
-        transform: translateX(50px) scale(0.68, 0.68);
-    }
-    50% {
-        transform: translateX(0) scale(0.68, 0.68);
-    }
-    100% {
-        transform: translateX(50px) scale(0.68, 0.68);
-    }
-}
-
-@keyframes cloudAnimation-right {
-    0% {
-        transform: translateX(-50px) scale(0.68, 0.68) rotateY(180deg);
-    }
-    50% {
-        transform: translateX(0) scale(0.68, 0.68) rotateY(180deg);
-    }
-    100% {
-        transform: translateX(-50px) scale(0.68, 0.68) rotateY(180deg);
-    }
-}
-
-@keyframes rain-drop {
-    0% {
-        transform: translateY(-100px);
-    }
-    100% {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-}
-
-@keyframes sunRotate {
-    0% {
-        transform: rotate(0);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes thunderAnimation {
-    0% {
-        opacity: 0;
-    }
-    5% {
-        opacity: 1;
-    }
-    10% {
-        opacity: 0;
-    }
-    15% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
+        transform: translateY(0);
     }
 }

@@ -1,0 +1,20 @@
+.cloudSVG {
+    height: 300px;
+    width: 100%;
+    position: absolute;
+
+    path {
+        fill: #e6e6e6;
+    }
+
+    &\:left {
+        transform: translateX(-180px) scale(0.68, 0.68);
+        opacity: .5;
+    }
+
+    &\:right {
+        transform: translateX(180px) scale(0.68, 0.68) rotateY(180deg);
+        opacity: .5;
+    }
+    
+}
