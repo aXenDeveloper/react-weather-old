@@ -1,0 +1,8 @@
+$color-sun: #fdd020;
+
+@mixin center_absolute($x, $y) {
+    position: absolute;
+    top: $x;
+    left: $y;
+    transform: translate(-$x, -$y);
+}

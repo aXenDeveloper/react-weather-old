@@ -1,0 +1,190 @@
+@import './_base';
+@import './_animation';
+
+.weather {
+  position: relative;
+  z-index: 1;
+  height: 40rem;
+
+  > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+  }
+
+  > *:not(.loading) {
+    position: relative;
+    animation: weather-up 1s ease-out;
+    transition: all 5s ease-out;
+    overflow: hidden;
+  }
+
+  &_cloud {
+    align-items: flex-start;
+  }
+
+  &_sun .temp {
+    @include center_absolute(50%, 50%);
+    color: #000;
+  }
+
+  &_moon .temp {
+    @include center_absolute(40%, 54%);
+    color: #000;
+  }
+}
+
+.cloud {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  &\:left {
+    position: absolute;
+    left: -200px;
+    transform: scale(.68, .68);
+    opacity: .5;
+    animation: cloudAnimation-left 20s ease infinite;
+    z-index: 1;
+  }
+
+  .timeOfDay\:left {
+    position: absolute;
+    left: -125px;
+    transform: scale(.5, .5);
+    top: -25px;
+    z-index: 90;
+
+    .SVG_day {
+      width: 300px;
+      height: 300px;
+      animation: sunRotate 10s linear infinite;
+
+      path {
+        fill: $color-sun;
+      }
+    }
+
+    .SVG_night {
+      width: 300px;
+      height: 300px;
+      
+      path {
+        fill: #868686;
+      }
+    }
+  }
+
+  &\:center {
+    position: relative;
+    z-index: 100;
+
+    .temp {
+      @include center_absolute(55%, 50%);
+      color: #000;
+    }
+  }
+
+  &\:right {
+    position: absolute;
+    right: -200px;
+    transform: scale(.68, .68);
+    opacity: 0.5;
+    animation: cloudAnimation-right 20s ease infinite;
+    z-index: 1;
+  }
+
+  &_normal {
+    fill: #fff;
+  }
+
+  &_gray {
+    fill: #e6e6e6;
+  }
+
+  &_dark {
+    fill: #3a3a3a;
+
+    ~ .temp {
+      color: #fff;
+    }
+  }
+
+  &_rain {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -10;
+
+    .drop {
+      background-color: #fff;
+      height: 25px;
+      width: 4px;
+      margin: 5px;
+      border-radius: 25px;
+      display: inline-block;
+      animation: rain-drop 2s linear infinite;
+      opacity: 0.85;
+
+      &.drop-1 {
+        animation-duration: 1s;
+      }
+      &.drop-2 {
+        animation-duration: 0.95s;
+      }
+      &.drop-3 {
+        animation-duration: 1.2s;
+      }
+      &.drop-4 {
+        animation-duration: 0;
+      }
+      &.drop-5 {
+        animation-duration: 0.85s;
+      }
+    }
+  }
+}
+
+.SVG {
+  &_cloud {
+    height: 300px;
+    width: 100%;
+  }
+
+  &_sun {
+    width: 300px;
+    height: 300px;
+    animation: sunRotate 10s linear infinite;
+  
+    path {
+      fill: $color-sun;
+    }
+  }
+
+  &_thunder {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 20%;
+    bottom: 0;
+    animation: thunderAnimation 2.5s linear infinite;
+    z-index: 100;
+
+    path {
+      fill: #ffa754;
+    }
+  }
+
+  &_moon {
+    width: 250px;
+    height: 250px;
+
+    path {
+      fill: #fce666;
+    }
+  }
+}
