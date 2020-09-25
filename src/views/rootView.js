@@ -12,6 +12,7 @@ const configAPI = {
 class rootView extends Component {
     state = {
         city: this.props.match.params.id ? this.props.match.params.id : '',
+        loading: false
     }
 
     mounted = false;
@@ -26,34 +27,40 @@ class rootView extends Component {
     }
 
     API = async () => {
+        if (this.mounted) this.setState({ loading: true });
+
         try {
             const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${configAPI.key}&units=metric`);
             const APIJson = await API.json();
-            console.log(APIJson);
 
-            if (this.state.mounted && API.status === 200) {
+            console.log(APIJson); // Debug
+
+            if (this.mounted && API.status === 200) {
                 this.setState({
                     weatherID: APIJson.weather[0].id,
                     weatherIcon: APIJson.weather[0].icon
                 })
             }
 
+            if (this.mounted) this.setState({ loading: false });
+
         } catch (error) {
             console.log(error);
         }
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
+    handleSubmit = event => {
+        event.preventDefault();
 
-        this.props.history.push(this.state.city.toLowerCase());
+        this.props.history.push(
+            this.state.city.toLowerCase()
+        );
+
         this.API();
     }
 
-    handleInput = e => {
-        this.setState({
-            city: e.target.value
-        })
+    handleInput = event => {
+        this.setState({ city: event.target.value })
     }
 
     render() {
@@ -67,7 +74,7 @@ class rootView extends Component {
                     />
                 </header>
 
-                {this.props.match.params.id ? <WeatherView /> : <HomeVievs />}
+                {this.props.match.params.id ? <WeatherView loading={this.state.loading} /> : <HomeVievs />}
 
 
             </APIContext.Provider>

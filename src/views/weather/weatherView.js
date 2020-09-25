@@ -1,11 +1,18 @@
 import React from 'react';
 import SvgView from './svgView';
 import DataView from './dataView';
+import LoadingView from '../loadingView';
 
-const weatherView = () => (
+const weatherView = ({ loading }) => (
     <main>
-        <SvgView />
-        <DataView />
+        {loading ? (
+            <LoadingView />
+        ) : (
+                <>
+                    <SvgView />
+                    <DataView />
+                </>
+            )}
     </main>
 )
 
