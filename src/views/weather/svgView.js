@@ -1,5 +1,6 @@
 import React from 'react';
 import CloudSVG from './svg/cloud/cloudSVG';
+import SunSVG from './svg/sunSVG';
 
 const svgView = () => (
     <div className="weatherImg">

@@ -11,25 +11,25 @@
 
 @keyframes cloudAnimation-left {
     0% {
-        transform: translateX(-200px) scale(.68, .68);
+        transform: translateX(140px) scale(0.68, 0.68);
     }
     50% {
-        transform: translateX(-120px) scale(.68, .68);
+        transform: translateX(70px) scale(0.68, 0.68);
     }
     100% {
-        transform: translateX(-200px) scale(.68, .68);
+        transform: translateX(140px) scale(0.68, 0.68);
     }
 }
 
 @keyframes cloudAnimation-right {
     0% {
-        transform: translateX(200px) scale(.68, .68) rotateY(180deg);
+        transform: translateX(-140px) scale(0.68, 0.68) rotateY(180deg);
     }
     50% {
-        transform: translateX(120px) scale(.68, .68) rotateY(180deg);
+        transform: translateX(-70px) scale(0.68, 0.68) rotateY(180deg);
     }
     100% {
-        transform: translateX(200px) scale(.68, .68) rotateY(180deg);
+        transform: translateX(-140px) scale(0.68, 0.68) rotateY(180deg);
     }
 }
 
@@ -58,5 +58,14 @@
     }
     100% {
         opacity: 0;
+    }
+}
+
+@keyframes sunRotateCloud {
+    0% {
+        transform: rotate(0) scale(0.65);
+    }
+    100% {
+        transform: rotate(360deg) scale(0.65);
     }
 }

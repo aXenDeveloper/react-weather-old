@@ -1,40 +1,64 @@
 .weatherImg {
-    height: 40rem;
+    height: 100rem; // 40 rem default
     overflow: hidden;
     position: relative;
+    background: #565656;
+    z-index: -1;
 }
 
 .weatherImg\:animation {
     animation: weather-up 1s ease-out;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
 }
 
-.cloud {
+.cloudBlock {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+}
 
-    .cloudBlock {
+
+
+.cloud {
+    position: relative;
+
+    &\:SVG {
+        height: 300px;
+        width: 300px;
+    
+        > path {
+            fill: #fff;
+        }
+    }
+
+    &\:left {
+        transform: translateX(140px) scale(0.68, 0.68);
+        opacity: 0.5;
+        animation: cloudAnimation-left 20s ease infinite;
+        z-index: -1;
+    }
+
+    &\:right {
+        transform: translateX(180px) scale(0.68, 0.68) rotateY(180deg);
+        opacity: 0.5;
+        animation: cloudAnimation-right 20s ease infinite;
+        z-index: -1;
+    }
+
+    &\:sun {
+        height: 300px;
+        width: 300px;
         position: absolute;
+        transform: scale(0.65);
+        top: -50px;
+        right: -70px;
+        animation: sunRotateCloud 10s linear infinite;
+        z-index: -1;
 
-        > .cloud\:SVG {
-            height: 300px;
-            width: 100%;
-
-            > path {
-                fill: #fff;
-            }
-        }
-
-        &\:left {
-            transform: translateX(-180px) scale(0.68, 0.68);
-            opacity: 0.5;
-            animation: cloudAnimation-left 20s ease infinite;
-        }
-
-        &\:right {
-            transform: translateX(180px) scale(0.68, 0.68) rotateY(180deg);
-            opacity: 0.5;
-            animation: cloudAnimation-right 20s ease infinite;
+        > path {
+            fill: #fdd020;
         }
     }
 
