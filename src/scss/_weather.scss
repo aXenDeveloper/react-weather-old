@@ -11,6 +11,81 @@
 .cloud {
     display: flex;
     flex-direction: column;
-}
+    align-items: center;
 
-@import './svg';
+    .cloudBlock {
+        position: absolute;
+
+        > .cloud\:SVG {
+            height: 300px;
+            width: 100%;
+
+            > path {
+                fill: #fff;
+            }
+        }
+
+        &\:left {
+            transform: translateX(-180px) scale(0.68, 0.68);
+            opacity: 0.5;
+            animation: cloudAnimation-left 20s ease infinite;
+        }
+
+        &\:right {
+            transform: translateX(180px) scale(0.68, 0.68) rotateY(180deg);
+            opacity: 0.5;
+            animation: cloudAnimation-right 20s ease infinite;
+        }
+    }
+
+    &\:rain {
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -10;
+
+        .drop {
+            background-color: #fff;
+            height: 25px;
+            width: 4px;
+            margin: 5px;
+            border-radius: 25px;
+            display: inline-block;
+            animation: rain-drop 2s linear infinite;
+            opacity: 0.85;
+
+            &.drop\:1 {
+                animation-duration: 1s;
+            }
+            &.drop\:2 {
+                animation-duration: 0.95s;
+            }
+            &.drop\:3 {
+                animation-duration: 1.2s;
+            }
+            &.drop\:4 {
+                animation-duration: 1.4s;
+            }
+            &.drop\:5 {
+                animation-duration: 0.85s;
+            }
+        }
+    }
+
+    &\:thunder {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 20%;
+        bottom: 0;
+        animation: thunderAnimation 2.5s linear infinite;
+        z-index: 100;
+
+        > path {
+            fill: #ffa754;
+        }
+    }
+}

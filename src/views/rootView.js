@@ -75,8 +75,6 @@ class rootView extends Component {
                 </header>
 
                 {this.props.match.params.id ? <WeatherView loading={this.state.loading} /> : <HomeVievs />}
-
-
             </APIContext.Provider>
         )
     }

@@ -1,10 +1,10 @@
 import React from 'react';
-import CloudSVG from './svg/cloudSVG';
+import CloudSVG from './svg/cloud/cloudSVG';
 
 const svgView = () => (
     <div className="weatherImg">
         <div className="weatherImg:animation">
-            <CloudSVG />
+            <CloudSVG onRain onThunder />
         </div>
     </div>
 )

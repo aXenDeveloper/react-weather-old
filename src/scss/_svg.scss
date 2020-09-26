@@ -1,20 +1,26 @@
-.cloudSVG {
-    height: 300px;
-    width: 100%;
+.cloudBlock {
+
     position: absolute;
 
-    path {
-        fill: #fff;
+    > svg {
+        height: 300px;
+        width: 100%;
+        
+        > path {
+            fill: #fff;
+        }
     }
 
     &\:left {
-        transform: translateX(-180px) scale(0.68, 0.68);
+        transform: translateX(-180px) scale(.68, .68);
         opacity: .5;
+        animation: cloudAnimation-left 20s ease infinite;
     }
 
     &\:right {
-        transform: translateX(180px) scale(0.68, 0.68) rotateY(180deg);
+        transform: translateX(180px) scale(.68, .68) rotateY(180deg);
         opacity: .5;
+        animation: cloudAnimation-right 20s ease infinite;
     }
     
 }
