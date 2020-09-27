@@ -1,6 +1,6 @@
 import React from 'react';
-import SvgView from './svgView';
-import DataView from './dataView';
+import SvgView from './contain/svgView';
+import DataView from './contain/dataView';
 import LoadingView from '../loadingView';
 
 const weatherView = ({ loading }) => (

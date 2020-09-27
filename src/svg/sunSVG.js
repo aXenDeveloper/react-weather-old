@@ -1,6 +1,7 @@
 import React from 'react';
+import { APIContext } from '../context';
 
-const sunSVG = () => (
+export const sun = (
     <svg className="sun" viewBox="0 0 480 480" width="480pt" xmlns="http://www.w3.org/2000/svg">
         <path d="m376 240c0 75.109375-60.890625 136-136 136s-136-60.890625-136-136 60.890625-136 136-136 136 60.890625 136 136zm0 0" />
         <path d="m240 480c-4.417969 0-8-3.582031-8-8v-64c0-4.417969 3.582031-8 8-8s8 3.582031 8 8v64c0 4.417969-3.582031 8-8 8zm0 0" />
@@ -17,5 +18,17 @@ const sunSVG = () => (
         <path d="m72 416c-3.234375 0-6.152344-1.949219-7.390625-4.9375s-.550781-6.429688 1.734375-8.71875l48-48c3.140625-3.03125 8.128906-2.988281 11.214844.097656 3.085937 3.085938 3.128906 8.074219.097656 11.214844l-48 48c-1.5 1.5-3.535156 2.34375-5.65625 2.34375zm0 0" />
     </svg>
 )
+
+const sunSVG = () => (
+    <APIContext.Consumer>
+        {({ temp }) => (
+            <div className="sunBlock">
+                {sun}
+                <div className="temp">{temp}</div>
+            </div>
+        )}
+    </APIContext.Consumer>
+
+);
 
 export default sunSVG;

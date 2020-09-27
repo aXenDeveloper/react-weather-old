@@ -26,6 +26,13 @@ body {
     }
 }
 
+@mixin centerAbsolute($x, $y) {
+    position: absolute;
+    top: $x;
+    left: $y;
+    transform: translate(-$x, -$y);
+}
+
 
 @import './weather';
 @import './animation';

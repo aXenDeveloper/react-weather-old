@@ -12,6 +12,7 @@ const configAPI = {
 class rootView extends Component {
     state = {
         city: this.props.match.params.id ? this.props.match.params.id : '',
+        temp: 0,
         loading: false
     }
 
@@ -37,6 +38,7 @@ class rootView extends Component {
 
             if (this.mounted && API.status === 200) {
                 this.setState({
+                    temp: APIJson.main.temp,
                     weatherID: APIJson.weather[0].id,
                     weatherIcon: APIJson.weather[0].icon
                 })

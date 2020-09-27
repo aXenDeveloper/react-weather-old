@@ -61,11 +61,8 @@
     }
 }
 
-@keyframes sunRotateCloud {
-    0% {
-        transform: rotate(0) scale(0.65);
-    }
-    100% {
-        transform: rotate(360deg) scale(0.65);
+@keyframes sunRotate {
+    to {
+        transform: rotate(360deg);
     }
 }
