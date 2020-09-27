@@ -32,7 +32,7 @@ const cloudSVG = ({ onRain, onThunder, onTime }) => {
 
     return (
         <APIContext.Consumer>
-            {({ temp }) => (
+            {({ temp, degrees }) => (
                 <div className="cloudBlock">
                 <div className="cloud cloud:left">
                     {cloud}
@@ -45,7 +45,7 @@ const cloudSVG = ({ onRain, onThunder, onTime }) => {
                     {onRain && <RainSVG />}
                     {onThunder && <ThunderSVG />}
     
-                    <div className="temp">{temp}</div>
+                    <div className="temp">{temp}&#176;</div>
                 </div>
     
                 <div className="cloud cloud:right">

@@ -12,7 +12,7 @@ const moonSVG = () => (
         {({ temp }) => (
             <div className="moonBlock">
                 {moon}
-                <div className="temp">{temp}</div>
+                <div className="temp">{temp}&#176;</div>
             </div>
         )}
     </APIContext.Consumer>

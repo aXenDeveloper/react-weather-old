@@ -24,7 +24,7 @@ const sunSVG = () => (
         {({ temp }) => (
             <div className="sunBlock">
                 {sun}
-                <div className="temp">{temp}</div>
+                <div className="temp">{temp}&#176;</div>
             </div>
         )}
     </APIContext.Consumer>
