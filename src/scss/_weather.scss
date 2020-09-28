@@ -63,8 +63,22 @@
         height: 300px;
         width: 300px;
 
-        > path {
+        &_1 > path {
             fill: #fff;
+        }
+
+        &_2 > path {
+            fill: #d0dad9;
+        }
+
+        &_3 {
+            > path {
+                fill: #404443;
+            }
+
+            ~ .temp {
+                color: #fff;
+            }
         }
     }
 

@@ -13,7 +13,6 @@ class rootView extends Component {
     state = {
         city: this.props.match.params.id ? this.props.match.params.id : '',
         temp: 0,
-        degrees: 'metric',
         loading: false
     }
 
@@ -32,7 +31,7 @@ class rootView extends Component {
         if (this.mounted) this.setState({ loading: true });
 
         try {
-            const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${configAPI.key}&units=${this.state.degrees}&lang=pl`);
+            const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${configAPI.key}&units=metric&lang=pl`);
             const APIJson = await API.json();
 
             console.log(APIJson); // Debug
@@ -66,10 +65,6 @@ class rootView extends Component {
         this.setState({ city: event.target.value })
     }
 
-    handleSelect = event => {
-        this.setState({ degrees: event.target.value })
-    }
-
     render() {
         return (
             <APIContext.Provider value={this.state}>
@@ -77,7 +72,6 @@ class rootView extends Component {
                     <Form
                         handleInput={this.handleInput}
                         handleSubmit={this.handleSubmit}
-                        handleSelect={this.handleSelect}
                         city={this.state.city}
                     />
                 </header>
