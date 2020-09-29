@@ -118,13 +118,7 @@
     }
 
     &\:rain {
-        display: flex;
-        justify-content: space-around;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: -10;
+        @include dropCloud;
 
         .drop {
             background-color: #fff;
@@ -132,8 +126,7 @@
             width: 4px;
             margin: 5px;
             border-radius: 25px;
-            display: inline-block;
-            animation: rain-drop 2s linear infinite;
+            animation: drop 2s linear infinite;
             opacity: 0.85;
 
             &.drop\:1 {
@@ -150,6 +143,47 @@
             }
             &.drop\:5 {
                 animation-duration: 0.85s;
+            }
+        }
+    }
+
+    &\:snow {
+        @include dropCloud;
+
+        .drop {
+            font-size: 20px;
+            border-radius: 100%;
+            animation: drop 4s linear infinite;
+            color: #fff;
+            opacity: 0;
+
+            &.drop\:1 {
+                animation-duration: 4.5s;
+                animation-delay: 1s;
+            }
+            &.drop\:2 {
+                animation-duration: 3.7s;
+                animation-delay: 0.3s;
+            }
+            &.drop\:3 {
+                animation-duration: 5s;
+                animation-delay: 1.4s;
+            }
+            &.drop\:4 {
+                animation-duration: 4.5s;
+                animation-delay: 0.4s;
+            }
+            &.drop\:5 {
+                animation-duration: 4s;
+                animation-delay: 2.7s;
+            }
+            &.drop\:6 {
+                animation-duration: 5.3s;
+                animation-delay: 2.3s;
+            }
+            &.drop\:7 {
+                animation-duration: 6.8s;
+                animation-delay: 1s;
             }
         }
     }

@@ -7,31 +7,30 @@ import MoonSVG from '../svg/moonSVG';
 export const selectWeather = (id, icon) => {
 
     const thunder = {
-        200: <CloudSVG onThunder onRain />,
-        201: <CloudSVG onThunder onRain onCloud={2} />,
-        202: <CloudSVG onThunder onRain onCloud={3} />,
-        210: <CloudSVG onThunder />,
-        211: <CloudSVG onThunder onCloud={2} />,
-        212: <CloudSVG onThunder onCloud={3} />
+        200: <CloudSVG getThunder getRain />,
+        201: <CloudSVG getThunder getRain getCloud={2} />,
+        202: <CloudSVG getThunder getRain getCloud={3} />,
+        210: <CloudSVG getThunder />,
+        211: <CloudSVG getThunder getCloud={2} />,
+        212: <CloudSVG getThunder getCloud={3} />
     }
 
     const rain = {
-        '502d': <CloudSVG onRain onCloud={3} onTime={'day'} />,
-        '502n': <CloudSVG onRain onCloud={3} onTime={'night'} />,
-        520: <CloudSVG onRain />,
-        521: <CloudSVG onRain onCloud={2} />,
-        522: <CloudSVG onRain onCloud={3} />
+        '502d': <CloudSVG getRain getCloud={3} getTime={'day'} />,
+        '502n': <CloudSVG getRain getCloud={3} getTime={'night'} />,
+        520: <CloudSVG getRain />,
+        521: <CloudSVG getRain getCloud={2} />,
+        522: <CloudSVG getRain getCloud={3} />
     }
 
     const cloud = {
         802: <CloudSVG />,
-        803: <CloudSVG onCloud={2} />,
-        804: <CloudSVG onCloud={3} />
+        803: <CloudSVG getCloud={2} />,
+        804: <CloudSVG getCloud={3} />
     }
 
     const weather = {
         // Group 2xx: Thunderstorm
-
         // thunderstorm with light rain
         '200 11d': thunder[200],
         '200 11n': thunder[200],
@@ -54,25 +53,25 @@ export const selectWeather = (id, icon) => {
         '221 11d': thunder[212],
         '221 11n': thunder[212],
         // 	thunderstorm with light drizzle
-        '230 11d': <CloudSVG onThunder onRain onTime={'day'} />,
-        '230 11n': <CloudSVG onThunder onRain onTime={'night'} />,
+        '230 11d': <CloudSVG getThunder getRain getTime={'day'} />,
+        '230 11n': <CloudSVG getThunder getRain getTime={'night'} />,
         // 	thunderstorm with drizzle
-        '231 11d': <CloudSVG onThunder onRain onCloud={2} onTime={'day'} />,
-        '231 11n': <CloudSVG onThunder onRain onCloud={2} onTime={'night'} />,
+        '231 11d': <CloudSVG getThunder getRain getCloud={2} getTime={'day'} />,
+        '231 11n': <CloudSVG getThunder getRain getCloud={2} getTime={'night'} />,
         // 	thunderstorm with heavy drizzle
-        '232 11d': <CloudSVG onThunder onRain onCloud={3} onTime={'day'} />,
-        '232 11n': <CloudSVG onThunder onRain onCloud={3} onTime={'night'} />,
+        '232 11d': <CloudSVG getThunder getRain getCloud={3} getTime={'day'} />,
+        '232 11n': <CloudSVG getThunder getRain getCloud={3} getTime={'night'} />,
 
         // Group 3xx: Drizzle
 
 
         // Group 5xx: Rain
         // light rain
-        '500 10d': <CloudSVG onRain onTime={'day'} />,
-        '500 10n': <CloudSVG onRain onTime={'night'} />,
+        '500 10d': <CloudSVG getRain getTime={'day'} />,
+        '500 10n': <CloudSVG getRain getTime={'night'} />,
         // moderate rain
-        '501 10d': <CloudSVG onRain onCloud={2} onTime={'day'} />,
-        '501 10n': <CloudSVG onRain onCloud={2} onTime={'night'} />,
+        '501 10d': <CloudSVG getRain getCloud={2} getTime={'day'} />,
+        '501 10n': <CloudSVG getRain getCloud={2} getTime={'night'} />,
         // heavy intensity rain
         '502 10d': rain['502d'],
         '502 10n': rain['502n'],
@@ -98,6 +97,7 @@ export const selectWeather = (id, icon) => {
         '531 10n': rain[522],
 
         // Group 6xx: Snow
+        '600 13d': <CloudSVG getSnow getThunder getRain getTime={'day'} />,
 
         // Group 7xx: Atmosphere
 
@@ -108,8 +108,8 @@ export const selectWeather = (id, icon) => {
 
         // Group 80x: Clouds
         // few clouds: 11-25%
-        '801 02d': <CloudSVG onTime={'day'} />,
-        '801 02n': <CloudSVG onTime={'night'} />,
+        '801 02d': <CloudSVG getTime={'day'} />,
+        '801 02n': <CloudSVG getTime={'night'} />,
         // scattered clouds: 25-50%
         '802 03d': cloud[802],
         '802 03n': cloud[802],

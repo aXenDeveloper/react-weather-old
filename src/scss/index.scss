@@ -33,6 +33,15 @@ body {
     transform: translate(-$x, -$y);
 }
 
+@mixin dropCloud {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -10;
+}
 
-@import './weather';
-@import './animation';
+@import "./weather";
+@import "./animation";

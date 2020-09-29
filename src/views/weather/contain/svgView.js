@@ -7,7 +7,7 @@ const svgView = () => (
         {({ weatherID, weatherIcon }) => (
             <div className="weatherImg">
                 <div className="weatherImg:animation">
-                    {selectWeather(weatherID, weatherIcon)}
+                    {selectWeather(600, '13d')}
                 </div>
             </div>
         )}
@@ -16,4 +16,4 @@ const svgView = () => (
 
 export default svgView;
 
-// {selectWeather[weatherIcon]}
+// {selectWeather(weatherID, weatherIcon)}
