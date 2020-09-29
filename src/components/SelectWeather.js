@@ -29,6 +29,15 @@ export const selectWeather = (id, icon) => {
         804: <CloudSVG getCloud={3} />
     }
 
+    const snow = {
+        600: <CloudSVG getSnow />,
+        601: <CloudSVG getSnow getCloud={2} />,
+        602: <CloudSVG getSnow getCloud={3} />,
+
+        615: <CloudSVG getSnow getRain getCloud={2} />,
+        616: <CloudSVG getSnow getRain getCloud={3} />,
+    }
+
     const weather = {
         // Group 2xx: Thunderstorm
         // thunderstorm with light rain
@@ -49,21 +58,47 @@ export const selectWeather = (id, icon) => {
         // heavy thunderstorm
         '212 11d': thunder[212],
         '212 11n': thunder[212],
-        // 	ragged thunderstorm
+        // ragged thunderstorm
         '221 11d': thunder[212],
         '221 11n': thunder[212],
-        // 	thunderstorm with light drizzle
+        // thunderstorm with light drizzle
         '230 11d': <CloudSVG getThunder getRain getTime={'day'} />,
         '230 11n': <CloudSVG getThunder getRain getTime={'night'} />,
-        // 	thunderstorm with drizzle
+        // thunderstorm with drizzle
         '231 11d': <CloudSVG getThunder getRain getCloud={2} getTime={'day'} />,
         '231 11n': <CloudSVG getThunder getRain getCloud={2} getTime={'night'} />,
-        // 	thunderstorm with heavy drizzle
+        // thunderstorm with heavy drizzle
         '232 11d': <CloudSVG getThunder getRain getCloud={3} getTime={'day'} />,
         '232 11n': <CloudSVG getThunder getRain getCloud={3} getTime={'night'} />,
 
         // Group 3xx: Drizzle
-
+        // light intensity drizzle
+        '300 09d': rain[520],
+        '300 09n': rain[520],
+        // drizzle
+        '301 09d': rain[521],
+        '301 09n': rain[521],
+        // heavy intensity drizzle
+        '302 09d': rain[522],
+        '302 09n': rain[522],
+        // light intensity drizzle rain
+        '310 09d': rain[520],
+        '310 09n': rain[520],
+        // drizzle rain
+        '311 09d': rain[521],
+        '311 09n': rain[521],
+        // heavy intensity drizzle rain
+        '312 09d': rain[522],
+        '312 09n': rain[522],
+        // shower rain and drizzle
+        '313 09d': rain[520],
+        '313 09n': rain[520],
+        // heavy shower rain and drizzle
+        '314 09d': rain[521],
+        '314 09n': rain[521],
+        // shower drizzle
+        '321 09d': rain[522],
+        '321 09n': rain[522],
 
         // Group 5xx: Rain
         // light rain
@@ -97,7 +132,38 @@ export const selectWeather = (id, icon) => {
         '531 10n': rain[522],
 
         // Group 6xx: Snow
-        '600 13d': <CloudSVG getSnow getThunder getRain getTime={'day'} />,
+        // light snow
+        '600 13d': snow[600],
+        '600 13n': snow[600],
+        // Snow
+        '601 13d': snow[601],
+        '601 13n': snow[601],
+        // Heavy snow
+        '602 13d': snow[602],
+        '602 13n': snow[602],
+
+        // Sleet
+
+        // Light shower sleet
+
+        // Shower sleet
+
+
+        // Light rain and snow
+        '615 13d': snow[615],
+        '615 13n': snow[615],
+        // Rain and snow
+        '616 13d': snow[616],
+        '616 13n': snow[616],
+        // Light shower snow
+        '620 13d': snow[600],
+        '620 13n': snow[600],
+        // Shower snow
+        '621 13d': snow[601],
+        '621 13n': snow[601],
+        // Heavy shower snow
+        '622 13d': snow[602],
+        '622 13n': snow[602],
 
         // Group 7xx: Atmosphere
 
