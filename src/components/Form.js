@@ -5,6 +5,6 @@ const Form = ({ handleInput, handleSubmit, city }) => (
         <input onChange={handleInput} name="city" value={city} type='text' placeholder='Wpisz miasto' />
         <button>Search</button>
     </form>
-)
+);
 
 export default Form;

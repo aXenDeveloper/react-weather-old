@@ -117,19 +117,20 @@ export const selectWeather = (id, icon) => {
         '504 10d': rain['502d'],
         '504 10n': rain['502n'],
         // freezing rain
-
+        '511 13d': rain[522],
+        '511 13n': rain[522],
         // light intensity shower rain
-        '520 10d': rain[520],
-        '520 10n': rain[520],
+        '520 09d': rain[520],
+        '520 09n': rain[520],
         // shower rain
-        '521 10d': rain[521],
-        '521 10n': rain[521],
+        '521 09d': rain[521],
+        '521 09n': rain[521],
         // heavy intensity shower rain
-        '522 10d': rain[522],
-        '522 10n': rain[522],
+        '522 09d': rain[522],
+        '522 09n': rain[522],
         // heavy intensity shower rain
-        '531 10d': rain[522],
-        '531 10n': rain[522],
+        '531 09d': rain[522],
+        '531 09n': rain[522],
 
         // Group 6xx: Snow
         // light snow

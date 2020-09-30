@@ -36,33 +36,35 @@ class rootView extends Component {
 
             console.log(APIJson); // Debug
 
-            if (this.mounted && API.status === 200) {
-                this.setState({
-                    temp: APIJson.main.temp,
-                    weatherID: APIJson.weather[0].id,
-                    weatherIcon: APIJson.weather[0].icon
-                })
-            }
+            if (this.mounted) {
+                if (API.status === 200) {
+                    this.setState({
+                        temp: APIJson.main.temp,
+                        weatherID: APIJson.weather[0].id,
+                        weatherIcon: APIJson.weather[0].icon
+                    })
+                }
 
-            if (this.mounted) this.setState({ loading: false });
+                this.setState({ loading: false });
+            }
 
         } catch (error) {
             console.log(error);
         }
     }
 
-    handleSubmit = event => {
-        event.preventDefault();
+    handleSubmit = e => {
+        e.preventDefault();
 
         this.props.history.push(
             this.state.city.toLowerCase()
         );
 
-        this.API();
+        if (this.props.match.params.id) this.API();
     }
 
-    handleInput = event => {
-        this.setState({ city: event.target.value })
+    handleInput = e => {
+        this.setState({ city: e.target.value })
     }
 
     render() {
