@@ -1,12 +1,12 @@
 import React from 'react';
-import i18n from 'i18next';
+import { withTranslation  } from 'react-i18next';
 
-const homeVievs = () => {
+const homeVievs = ({ t }) => {
     return (
         <div>
-            <h1>{i18n.t('Welcome to React')}</h1>
+            <h1>{t('Welcome to React')}</h1>
         </div>
     )
 };
 
-export default homeVievs;
+export default withTranslation()(homeVievs);

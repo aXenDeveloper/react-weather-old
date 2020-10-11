@@ -4,10 +4,9 @@ import { APIContext } from '../context';
 import Form from '../components/Form';
 import HomeVievs from './homeView';
 import WeatherView from './weather/weatherView';
-
-const configAPI = {
-    key: '40ea5ceef9ec33888dffe518d21b0d28'
-}
+import Lang from '../components/Lang';
+import i18n from '../i18n';
+import config from '../config';
 
 class rootView extends Component {
     state = {
@@ -31,7 +30,7 @@ class rootView extends Component {
         if (this.mounted) this.setState({ loading: true });
 
         try {
-            const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${configAPI.key}&units=metric&lang=pl`);
+            const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${config.keyAPI}&units=metric&lang=${i18n.language}`);
             const APIJson = await API.json();
 
             console.log(APIJson); // Debug
@@ -77,6 +76,7 @@ class rootView extends Component {
                         handleSubmit={this.handleSubmit}
                         city={this.state.city}
                     />
+                    <Lang />
                 </header>
 
                 {this.props.match.params.id ? <WeatherView loading={this.state.loading} /> : <HomeVievs />}

@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from "react-i18next";
+import config from './config';
 import translationEN from './lang/en/translation.json';
 import translationPL from './lang/pl/translation.json';
 
@@ -23,9 +24,9 @@ i18n
 
             // keys or params to lookup language from
             lookupQuerystring: 'lng',
-            lookupCookie: 'i18next',
-            lookupLocalStorage: 'i18nextLng',
-            lookupSessionStorage: 'i18nextLng',
+            lookupCookie: config.cookie,
+            lookupLocalStorage: config.localStorage,
+            lookupSessionStorage: config.sessionStorage,
             lookupFromPathIndex: 0,
             lookupFromSubdomainIndex: 0,
 
@@ -45,6 +46,7 @@ i18n
         },
         resources,
         fallbackLng: "en",
+        ebug: true,
 
         keySeparator: false, // we do not use keys in form messages.welcome
 
