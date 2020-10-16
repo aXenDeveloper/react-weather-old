@@ -3,6 +3,7 @@
     overflow: hidden;
     position: relative;
     z-index: -1;
+    background-color: #eef4f9;
 }
 
 .weatherImg\:animation {
@@ -121,7 +122,7 @@
         @include dropCloud;
 
         .drop {
-            background-color: #fff;
+            background-color: #7bcaff;
             height: 25px;
             width: 4px;
             margin: 5px;

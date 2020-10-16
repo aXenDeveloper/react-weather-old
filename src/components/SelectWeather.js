@@ -188,7 +188,7 @@ export const selectWeather = (id, icon) => {
         '804 04n': cloud[804],
 
 
-        '100 00d': <CloudSVG getSnow getRain getThunder getCloud={1} getTime={'night'} /> // Debug
+        '100 00d': <CloudSVG getSnow getRain getThunder getCloud={3} getTime={'night'} /> // Debug
     }
 
     return weather[`${id} ${icon}`];

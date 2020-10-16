@@ -31,6 +31,7 @@ class rootView extends Component {
 
         try {
             const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${config.keyAPI}&units=metric&lang=${i18n.language}`);
+            // const API = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=53.68&lon=16.42&exclude=hourly,daily&appid=${config.keyAPI}`);
             const APIJson = await API.json();
 
             console.log(APIJson); // Debug

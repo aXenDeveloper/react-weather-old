@@ -1,10 +1,17 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-const Form = ({ handleInput, handleSubmit, city }) => (
-    <form onSubmit={handleSubmit}>
-        <input onChange={handleInput} name="city" value={city} type='text' placeholder='Wpisz miasto' />
-        <button>Search</button>
+const Form = ({ handleInput, handleSubmit, city, t }) => (
+    <form id="search" onSubmit={handleSubmit}>
+        <label htmlFor="search_input">Search Weather:</label>
+        <input id="search_input" onChange={handleInput} name="city" value={city} type='text' placeholder={t('search_placeholder')} />
+
+        <button>
+            <FontAwesomeIcon icon={faSearch} />
+        </button>
     </form>
 );
 
-export default Form;
+export default withTranslation()(Form);

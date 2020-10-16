@@ -7,7 +7,7 @@ const svgView = () => (
         {({ weatherID, weatherIcon }) => (
             <div className="weatherImg">
                 <div className="weatherImg:animation">
-                    {selectWeather(weatherID, weatherIcon)}
+                    {selectWeather(100, '00d')}
                 </div>
             </div>
         )}
