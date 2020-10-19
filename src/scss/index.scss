@@ -2,30 +2,16 @@ html {
     font-size: 10px;
 }
 
-:root {
-    --block-shadow: 0 8px 24px 0px rgba(0, 0, 0, 0.15);
-}
+@import './variables';
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-        "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+        'Droid Sans', 'Helvetica Neue', sans-serif;
     background-color: #f9fafe;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     font-size: 13px;
-}
-
-.topBar {
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    box-shadow: var(--block-shadow);
-    padding: 1.5rem;
 }
 
 @mixin centerAbsolute($x, $y) {
@@ -45,8 +31,23 @@ body {
     z-index: -10;
 }
 
-@import "./weather";
-@import "./animation";
+@media screen and (max-width: 979px) {
+    .hide_mobile {
+        display: none;
+    }
+}
+
+.topBar {
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: var(--block-shadow);
+    padding: 1.5rem;
+}
 
 .test {
     box-shadow: 0 16px 40px rgba(112, 144, 176, 0.2);
@@ -54,35 +55,15 @@ body {
     height: 300px;
 }
 
-#search {
-    position: relative;
-    margin: 1rem;
-
-    input {
-        background-color: #eef4f9;
-        border-color: transparent;
-        padding: 1rem 1.5rem 1rem 1.5rem;
-        width: 300px;
-        border-radius: 1rem;
-
-        &:focus {
-            outline: 0;
-        }
-    }
-
-    label {
-        display: none;
-    }
-
-    button {
-        position: absolute;
-        font-size: 16px;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-    }
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    padding: 5rem;
 }
+
+@import './svg';
+@import './global';
+@import './weather';
+@import './animation';

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import CloudSVG from '../svg/cloud/cloudSVG';
-import SunSVG from '../svg/sunSVG';
-import MoonSVG from '../svg/moonSVG';
+import CloudSVG from './svg/cloud/cloudSVG';
+import SunSVG from './svg/sunSVG';
+import MoonSVG from './svg/moonSVG';
 
 export const selectWeather = (id, icon) => {
 

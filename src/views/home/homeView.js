@@ -1,7 +1,7 @@
 import React from 'react';
-import { withTranslation  } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
-const homeVievs = ({ t }) => {
+const HomeView = ({ t }) => {
     return (
         <div>
             <h1>{t('Welcome to React')}</h1>
@@ -10,4 +10,4 @@ const homeVievs = ({ t }) => {
     )
 };
 
-export default withTranslation()(homeVievs);
+export default withTranslation()(HomeView);

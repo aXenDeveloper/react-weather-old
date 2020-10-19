@@ -1,5 +1,5 @@
 import React from 'react';
-import { APIContext } from '../context';
+import { APIContext } from '../../../context';
 
 export const sun = (
     <svg className="sun" viewBox="0 0 480 480" width="480pt" xmlns="http://www.w3.org/2000/svg">

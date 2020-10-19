@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router';
 import { APIContext } from '../context';
-import Form from '../components/Form';
-import HomeVievs from './homeView';
-import WeatherView from './weather/weatherView';
-import Lang from '../components/Lang';
+import Form from '../components/Form/Form';
+import Lang from '../components/Lang/Lang';
 import i18n from '../i18n';
 import config from '../config';
 
-class rootView extends Component {
+class RootView extends Component {
     state = {
         city: this.props.match.params.id ? this.props.match.params.id : '',
         temp: 0,
@@ -42,7 +40,15 @@ class rootView extends Component {
                     this.setState({
                         temp: APIJson.main.temp,
                         weatherID: APIJson.weather[0].id,
-                        weatherIcon: APIJson.weather[0].icon
+                        weatherIcon: APIJson.weather[0].icon,
+                        clouds: APIJson.clouds.all,
+                        coord_lat: APIJson.coord.lat,
+                        coord_lon: APIJson.coord.lon,
+                        feels_like: APIJson.main.feels_like,
+                        humidity: APIJson.main.humidity,
+                        pressure: APIJson.main.pressure,
+                        temp_max: APIJson.main.temp_max,
+                        temp_min: APIJson.maintemp_min
                     })
                 }
 
@@ -68,7 +74,14 @@ class rootView extends Component {
         this.setState({ city: e.target.value })
     }
 
+    changeLanguage = lng => {
+        i18n.changeLanguage(lng);
+        if (this.props.match.params.id) this.API();
+    }
+
     render() {
+        const childrenWithProps = React.Children.map(this.props.children, child => React.cloneElement(child, { state: this.state }));
+
         return (
             <APIContext.Provider value={this.state}>
                 <header className="topBar">
@@ -77,13 +90,15 @@ class rootView extends Component {
                         handleSubmit={this.handleSubmit}
                         city={this.state.city}
                     />
-                    <Lang />
+                    <div className="hide_mobile">
+                        <Lang changeLanguage={this.changeLanguage} />
+                    </div>
                 </header>
 
-                {this.props.match.params.id ? <WeatherView loading={this.state.loading} /> : <HomeVievs />}
+                {childrenWithProps}
             </APIContext.Provider>
         )
     }
 }
 
-export default withRouter(rootView);
+export default withRouter(RootView);

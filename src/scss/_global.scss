@@ -1,0 +1,12 @@
+.container {
+    padding: 0 15px;
+    margin: 0 auto;
+    position: relative;
+    max-width: 1630px;
+}
+
+@media screen and (max-width: 979px) {
+    .hide_mobile {
+        display: none;
+    }
+}

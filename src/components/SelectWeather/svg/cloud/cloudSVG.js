@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { APIContext } from '../../context';
+import { APIContext } from '../../../../context';
 import RainSVG from './rainSVG';
 import SnowSVG from './snowSVG';
 import ThunderSVG from './thunderSVG';
@@ -28,28 +28,28 @@ const cloudSVG = ({ getRain, getThunder, getTime, getCloud, getSnow }) => {
         <APIContext.Consumer>
             {({ temp }) => (
                 <div className="cloudBlock">
-                <div className="cloud cloud:left">
-                    {cloud}
-                    {getRain && <RainSVG />}
-                    {getSnow && <SnowSVG />}
+                    <div className="cloud cloud:left">
+                        {cloud}
+                        {getRain && <RainSVG />}
+                        {getSnow && <SnowSVG />}
+                    </div>
+
+                    <div className="cloud">
+                        {timeOfDay(getTime)}
+                        {cloud}
+                        {getRain && <RainSVG />}
+                        {getThunder && <ThunderSVG />}
+                        {getSnow && <SnowSVG />}
+
+                        <div className="temp">{temp}&#176;</div>
+                    </div>
+
+                    <div className="cloud cloud:right">
+                        {cloud}
+                        {getRain && <RainSVG />}
+                        {getSnow && <SnowSVG />}
+                    </div>
                 </div>
-    
-                <div className="cloud">
-                    {timeOfDay(getTime)}
-                    {cloud}
-                    {getRain && <RainSVG />}
-                    {getThunder && <ThunderSVG />}
-                    {getSnow && <SnowSVG />}
-    
-                    <div className="temp">{temp}&#176;</div>
-                </div>
-    
-                <div className="cloud cloud:right">
-                    {cloud}
-                    {getRain && <RainSVG />}
-                    {getSnow && <SnowSVG />}
-                </div>
-            </div>
             )}
         </APIContext.Consumer>
     )
@@ -57,7 +57,7 @@ const cloudSVG = ({ getRain, getThunder, getTime, getCloud, getSnow }) => {
 
 cloudSVG.propTypes = {
     onRain: PropTypes.bool,
-    getThunder: PropTypes.bool, 
+    getThunder: PropTypes.bool,
     getTime: PropTypes.string,
     getCloud: PropTypes.number.isRequired
 };

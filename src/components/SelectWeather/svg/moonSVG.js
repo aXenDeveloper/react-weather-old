@@ -1,5 +1,5 @@
 import React from 'react';
-import { APIContext } from '../context';
+import { APIContext } from '../../../context';
 
 export const moon = (
     <svg className="moon" viewBox="-8 0 464 464.177" xmlns="http://www.w3.org/2000/svg">

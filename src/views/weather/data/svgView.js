@@ -1,19 +1,17 @@
 import React from 'react';
 import { APIContext } from '../../../context';
-import { selectWeather } from '../../../components/SelectWeather';
+import { selectWeather } from '../../../components/SelectWeather/SelectWeather';
 
-const svgView = () => (
+const Svg = () => (
     <APIContext.Consumer>
         {({ weatherID, weatherIcon }) => (
             <div className="weatherImg">
                 <div className="weatherImg:animation">
-                    {selectWeather(100, '00d')}
+                    {selectWeather(weatherID, weatherIcon)}
                 </div>
             </div>
         )}
     </APIContext.Consumer>
 )
 
-export default svgView;
-
-// {selectWeather(weatherID, weatherIcon)}
+export default Svg;
