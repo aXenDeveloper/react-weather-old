@@ -1,5 +1,5 @@
 const config = {
-    keyAPI: '40ea5ceef9ec33888dffe518d21b0d28',
+    keyAPI: 'ef68545d06fa040c1983f04eafc5e4a1',
     cookie: 'i18next',
     localStorage: 'i18nextLng',
     sessionStorage: 'i18nextLng'

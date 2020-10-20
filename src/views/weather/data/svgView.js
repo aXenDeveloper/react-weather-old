@@ -7,7 +7,7 @@ const Svg = () => (
         {({ weatherID, weatherIcon }) => (
             <div className="weatherImg">
                 <div className="weatherImg:animation">
-                    {selectWeather(weatherID, weatherIcon)}
+                    {selectWeather()}
                 </div>
             </div>
         )}

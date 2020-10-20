@@ -7,14 +7,14 @@ const WeatherView = ({ state }) => {
     const { loading } = state;
 
     return (
-        <main>
+        <>
             {loading ? <LoadingView /> : (
                 <>
                     <SvgView />
                     <DataView />
                 </>
             )}
-        </main>
+        </>
     )
 };
 

@@ -4,6 +4,7 @@ import { APIContext } from '../../../../context';
 import RainSVG from './rainSVG';
 import SnowSVG from './snowSVG';
 import ThunderSVG from './thunderSVG';
+import ConvertTemp from '../../../ConvertTemp';
 import { sun } from '../sunSVG';
 import { moon } from '../moonSVG';
 
@@ -41,7 +42,7 @@ const cloudSVG = ({ getRain, getThunder, getTime, getCloud, getSnow }) => {
                         {getThunder && <ThunderSVG />}
                         {getSnow && <SnowSVG />}
 
-                        <div className="temp">{temp}&#176;</div>
+                        <ConvertTemp />
                     </div>
 
                     <div className="cloud cloud:right">

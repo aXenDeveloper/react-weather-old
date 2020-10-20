@@ -10,3 +10,12 @@
         display: none;
     }
 }
+
+.data_block {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: srem;
+    box-shadow: var(--block-shadow);
+    padding: 2rem;
+    margin-top: 2rem;
+}

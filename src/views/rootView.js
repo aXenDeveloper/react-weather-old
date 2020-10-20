@@ -9,7 +9,7 @@ import config from '../config';
 class RootView extends Component {
     state = {
         city: this.props.match.params.id ? this.props.match.params.id : '',
-        temp: 0,
+        temp: 279.82,
         loading: false
     }
 
@@ -25,10 +25,10 @@ class RootView extends Component {
     }
 
     API = async () => {
-        if (this.mounted) this.setState({ loading: true });
+        if (this.mounted) this.setState({ loading: false });
 
         try {
-            const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${config.keyAPI}&units=metric&lang=${i18n.language}`);
+            const API = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${config.keyAI}&lang=${i18n.language}`);
             // const API = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=53.68&lon=16.42&exclude=hourly,daily&appid=${config.keyAPI}`);
             const APIJson = await API.json();
 
@@ -94,8 +94,9 @@ class RootView extends Component {
                         <Lang changeLanguage={this.changeLanguage} />
                     </div>
                 </header>
-
-                {childrenWithProps}
+                <main>
+                    {childrenWithProps}
+                </main>
             </APIContext.Provider>
         )
     }

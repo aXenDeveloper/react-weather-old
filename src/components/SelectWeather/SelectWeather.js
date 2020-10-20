@@ -4,7 +4,7 @@ import CloudSVG from './svg/cloud/cloudSVG';
 import SunSVG from './svg/sunSVG';
 import MoonSVG from './svg/moonSVG';
 
-export const selectWeather = (id, icon) => {
+export const selectWeather = (id = 100, icon = 100) => {
 
     const thunder = {
         200: <CloudSVG getThunder getRain />,
@@ -188,7 +188,7 @@ export const selectWeather = (id, icon) => {
         '804 04n': cloud[804],
 
 
-        '100 00d': <CloudSVG getSnow getRain getThunder getCloud={3} getTime={'night'} /> // Debug
+        '100 100': <CloudSVG getSnow getRain getThunder getCloud={3} getTime={'night'} /> // Debug
     }
 
     return weather[`${id} ${icon}`];
